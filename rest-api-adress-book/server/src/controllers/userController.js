@@ -4,17 +4,15 @@ import authMiddleware from '../middlewares/authMiddleware.js';
 
 const userController = Router();
 
-// Връща всички потребители
 userController.get('/', async (req, res) => {
     try {
         const users = await userService.getAllUsers();
         res.json(users);
     } catch (err) {
-        res.status(500).json({ message: 'Error retrieving users' });
+        res.json({ message: 'Error retrieving users' });
     }
 });
 
-// Регистрация
 userController.post('/register', async (req, res) => {
     const { username, phoneNumber, email, password} = req.body;
 
@@ -26,14 +24,12 @@ userController.post('/register', async (req, res) => {
     }
 });
 
-// Логин
 userController.post('/login', async (req, res) => {
     const { username, password } = req.body;
 
     try {
         const result = await userService.login(username, password);
 
-        // Връщаме токена на клиента
         res.json({
             token: result.token,
             user: {
@@ -48,22 +44,19 @@ userController.post('/login', async (req, res) => {
     }
 });
 
-// Профил
 userController.get('/profile', authMiddleware, async (req, res) => {
     try {
         const user = await userService.getUserById(req.user.id);
         res.json(user);
     } catch (err) {
-        res.status(500).json({ message: 'Error fetching profile' });
+        res.json({ message: 'Error fetching profile' });
     }
 });
 
-// Логаут
 userController.post('/logout', authMiddleware, (req, res) => {
     res.json({ message: 'Logged out successfully' });
 });
 
-// Актуализиране на профила
 userController.put('/profile', authMiddleware, async (req, res) => {
     const { username, email, phoneNumber } = req.body;
 
@@ -71,11 +64,10 @@ userController.put('/profile', authMiddleware, async (req, res) => {
         const updatedUser = await userService.updateUser(req.user.id, { username, email, phoneNumber });
         res.json(updatedUser);
     } catch (err) {
-        res.status(400).json({ message: err.message });
+        res.json({ message: err.message });
     }
 });
 
-// Актуализиране на паролата
 userController.put('/profile/update-password', authMiddleware, async (req, res) => {
     const { oldPassword, newPassword } = req.body;
 
@@ -83,7 +75,7 @@ userController.put('/profile/update-password', authMiddleware, async (req, res) 
         await userService.updatePassword(req.user.id, oldPassword, newPassword);
         res.json({ message: 'Password updated successfully' });
     } catch (err) {
-        res.status(400).json({ message: err.message });
+        res.json({ message: err.message });
     }
 });
 
