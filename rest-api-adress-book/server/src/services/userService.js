@@ -7,7 +7,7 @@ const userService = {
         return await User.find();
     },
 
-    async register(username, phoneNumber, email, password, contacts) {
+    async register(username, phoneNumber, email, password) {
         const existingUserByUsername = await User.findOne({ username });
         if (existingUserByUsername) {
             throw new Error('Username already exists');
@@ -23,7 +23,7 @@ const userService = {
             throw new Error('Phone number already exists');
         }
 
-        const user = new User({ username, phoneNumber, email, password, contacts });
+        const user = new User({ username, phoneNumber, email, password});
         const savedUser = await user.save();
 
         const userWithoutPassword = savedUser.toObject();

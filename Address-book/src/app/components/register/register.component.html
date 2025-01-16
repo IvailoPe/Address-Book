@@ -1,0 +1,161 @@
+<div class="register-container">
+  <h2>Register</h2>
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <label for="email">Email:</label>
+    <input
+      type="email"
+      id="email"
+      formControlName="email"
+      placeholder="Enter your email"
+      [ngClass]="{
+        'error-border':
+          registerForm.get('email')?.invalid &&
+          registerForm.get('email')?.touched
+      }"
+    />
+    <div
+    class="error-text"
+    *ngIf="
+      registerForm.get('email')?.hasError('required') &&
+      registerForm.get('email')?.touched
+    "
+  >
+    Email is required.
+  </div>
+    
+
+    <div
+      class="error-text"
+      *ngIf="
+        registerForm.get('email')?.hasError('email') &&
+        registerForm.get('email')?.touched
+      "
+    >
+      Email is invalid.
+    </div>
+
+    <label for="username">Username:</label>
+    <input
+      type="text"
+      id="username"
+      formControlName="username"
+      placeholder="Enter your username"
+      [ngClass]="{
+        'error-border':
+          registerForm.get('username')?.invalid &&
+          registerForm.get('username')?.touched
+      }"
+    />
+
+    <div
+      class="error-text"
+      *ngIf="
+        registerForm.get('username')?.hasError('required') &&
+        registerForm.get('username')?.touched
+      "
+    >
+      Username is required.
+    </div>
+
+    <div
+      class="error-text"
+      *ngIf="
+        (registerForm.get('username')?.hasError('minlength') ||
+        registerForm.get('username')?.hasError('maxlength')) &&
+        registerForm.get('username')?.touched
+      "
+    >
+      Username must be between 3 and 10 characters.
+    </div>
+
+
+    <label for="phoneNumber">Phone number:</label>
+    <input
+      type="tel"
+      id="phoneNumber"
+      formControlName="phoneNumber"
+      placeholder="Enter your phone number"
+      value="+359"
+      [ngClass]="{
+        'error-border':
+          registerForm.errors?.['phoneNumber'] &&
+          registerForm.get('phoneNumber')?.touched
+      }"
+    />
+    
+    <div
+      class="error-text"
+      *ngIf="
+        registerForm.errors?.['phoneNumber'] &&
+        registerForm.get('phoneNumber')?.touched
+      "
+    >
+      Phone is invalid and is required.
+    </div>
+
+
+
+    <div id="password-wrapper">
+      <label for="password" id="password-label">Password:</label>
+      <input
+        type="password"
+        id="password"
+        formControlName="password"
+        placeholder="Enter your password"
+        [ngClass]="{
+          'error-border':
+            registerForm.get('password')?.invalid &&
+            registerForm.get('password')?.touched
+        }"
+      />
+
+      <div
+      class="error-text"
+      *ngIf="
+        registerForm.get('password')?.hasError('required') &&
+        registerForm.get('password')?.touched
+      "
+    >
+      Password is required.
+    </div>
+
+    <div
+      class="error-text"
+      *ngIf="
+        registerForm.get('password')?.hasError('minlength') &&
+        registerForm.get('password')?.touched
+      "
+    >
+      Password must be at least 3 characters.
+    </div>
+
+      <label for="rePassword" id="rePassword-label">Confirm Password:</label>
+      <input
+        type="password"
+        id="rePassword"
+        formControlName="rePassword"
+        placeholder="Confirm your password"
+        [ngClass]="{
+          'error-border':
+            registerForm.get('rePassword')?.invalid &&
+            registerForm.get('rePassword')?.touched
+        }"
+      />
+    </div>
+
+    <div
+      class="error-text"
+      *ngIf="
+        registerForm.errors?.['passwordsMismatch'] &&
+        registerForm.get('password')?.touched
+      "
+    >
+      Passwords must match
+    </div>
+
+    <button type="submit" [disabled]="registerForm.invalid">Sign Up</button>
+  </form>
+  <p class="signup-text">
+    Already have an account? <a routerLink="/login">Log in</a>
+  </p>
+</div>

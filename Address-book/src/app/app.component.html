@@ -1,0 +1,3 @@
+<app-navigation *ngIf="!isAuthPage"></app-navigation>
+<main [ngClass]="{ 'main-class': !isAuthPage, 'auth-class': isAuthPage }"><router-outlet></router-outlet></main>
+<app-footer *ngIf="!isAuthPage"></app-footer>

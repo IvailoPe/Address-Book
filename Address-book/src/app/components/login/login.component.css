@@ -1,0 +1,138 @@
+.login-container {
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 20px;
+  border-radius: 15px;
+  text-align: center;
+  width: 350px;
+  min-height: 39%;
+  z-index: 2;
+  border: solid 2px black;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+label {
+  text-align: left;
+  font-size: 18px;
+}
+
+input {
+  padding: 15px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  margin-top: -5px;
+  font-size: 15px;
+}
+
+input::placeholder {
+  font-size: 16px;
+  color: #888;
+  font-family: "Poppins", sans-serif;
+}
+
+button {
+  padding: 12px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 18px;
+  width: 130px;
+  margin: 0 auto;
+  transition: font-size 0.5s;
+  height: 50px;
+}
+
+button:hover {
+  background-color: #45a049;
+  font-size: 22px;
+}
+
+.signup-text {
+  margin-top: 12px;
+  margin-bottom: 0px;
+  font-size: 17px;
+}
+
+.signup-text a {
+  color: #4caf50;
+  text-decoration: none;
+}
+
+.signup-text a:hover {
+  text-decoration: underline;
+}
+
+.error-border {
+  border-left: 6px solid red;
+}
+
+.error-text {
+  color: red;
+  font-size: 16px;
+  margin-top: 4px;
+}
+
+button:disabled {
+  background-color: gray;
+  cursor: not-allowed;
+}
+
+a {
+  cursor: pointer;
+}
+
+@media screen and (max-width: 389px) {
+  * {
+    box-sizing: border-box;
+  }
+
+  body,
+  html {
+    font-size: 12px;
+  }
+
+  .login-container {
+    width: 90%;
+    padding: 12px;
+    border-radius: 8px;
+    min-height: 10%;
+  }
+
+  label {
+    font-size: 13px;
+  }
+
+  input {
+    font-size: 12px;
+    padding: 10px;
+  }
+
+  button {
+    font-size: 12px;
+    padding: 8px;
+    height: 40px;
+    width: 90px;
+  }
+
+  .signup-text {
+    font-size: 12px;
+  }
+
+  .signup-text a {
+    font-size: 12px;
+  }
+
+  input::placeholder {
+    font-size: 12px;
+  }
+
+  form .error-text {
+    font-size: 12px;
+  }
+}

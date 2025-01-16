@@ -1,0 +1,26 @@
+:host{
+    width: 100%;
+}
+
+nav{
+    display: flex;
+    justify-content: space-evenly;
+    list-style-type: none;
+    align-items: center;
+    width: 100%;
+}
+
+nav p{
+    font-size: 1.0rem;
+    cursor: pointer;
+    transition: font-size 0.2s;
+}
+
+nav img{
+    border-radius: 100px;
+    cursor: pointer;
+}
+
+nav p:hover{
+    font-size: 1.2rem;;
+}

@@ -16,13 +16,13 @@ userController.get('/', async (req, res) => {
 
 // Регистрация
 userController.post('/register', async (req, res) => {
-    const { username, phoneNumber, email, password, contacts } = req.body;
+    const { username, phoneNumber, email, password} = req.body;
 
     try {
-        const user = await userService.register(username, phoneNumber, email, password, contacts);
+        const user = await userService.register(username, phoneNumber, email, password);
         res.json(user);
     } catch (err) {
-        res.status(400).json({ message: err.message });
+        res.json({ message: err.message });
     }
 });
 
@@ -41,11 +41,10 @@ userController.post('/login', async (req, res) => {
                 username: result.user.username,
                 email: result.user.email,
                 phoneNumber: result.user.phoneNumber,
-                contacts: result.user.contacts,
             },
         });
     } catch (err) {
-        res.status(400).json({ message: err.message });
+        res.json({ message: err.message });
     }
 });
 
