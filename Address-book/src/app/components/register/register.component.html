@@ -90,7 +90,7 @@
         registerForm.get('phoneNumber')?.touched
       "
     >
-      Phone is invalid and is required.
+      Phone is invalid and is required (359...).
     </div>
 
 
@@ -156,6 +156,6 @@
     <button type="submit" [disabled]="registerForm.invalid">Sign Up</button>
   </form>
   <p class="signup-text">
-    Already have an account? <a routerLink="/login">Log in</a>
+    Already have an account? <a routerLink="/login" >Log in</a>
   </p>
 </div>

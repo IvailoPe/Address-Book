@@ -1,0 +1,85 @@
+:host{
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 100%;
+}
+
+#update-username form {
+  display: flex;
+  flex-direction: column;
+}
+
+#update-email form {
+  display: flex;
+  flex-direction: column;
+}
+
+#update-password form {
+  display: flex;
+  flex-direction: column;
+}
+
+#update-phone form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  font-size: 1.4rem;
+  margin-top: 1rem;
+}
+
+input {
+  padding: 15px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  margin-top: 1rem;
+  font-size: 15px;
+}
+
+#edit-btn {
+  background-color: #c78e25;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 18px;
+  width: 10rem;
+  transition: font-size 0.5s;
+  height: 4rem;
+  margin: auto;
+  margin-top: 1.5rem;
+}
+
+#edit-btn:disabled {
+  background-color: gray;
+  cursor: not-allowed;
+}
+
+#edit-btn:disabled:hover {
+  background-color: gray; 
+  font-size: 19px;
+}
+
+.error-border {
+  border-left: 6px solid red;
+}
+
+.error-text {
+  color: red;
+  font-size: 13px;
+  margin-top: 4px;
+}
+
+#edit-btn:hover {
+  background-color: #ffa600;
+  font-size: 19px;
+}
+
+@media screen and (max-width: 1010px) {
+  :host{
+    flex-direction: column;
+  }
+}

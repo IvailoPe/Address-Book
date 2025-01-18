@@ -1,0 +1,48 @@
+<div id="main-wrapper">
+  <img id="contact-img" src="{{contactData?.image}}" />
+  <div id="contact-data-wrapper">
+    <h1>Contact Data</h1>
+    <h2>First name</h2>
+    <h3>{{ contactData?.firstName }}</h3>
+    <h2>Family name</h2>
+    <h3>{{ contactData?.lastName }}</h3>
+    <h2>Firm name</h2>
+    <h3>{{ contactData?.companyName }}</h3>
+    <h2>Address</h2>
+    <h3>{{ contactData?.address }}</h3>
+    <h2>Phone number</h2>
+    <h3>+{{ contactData?.phoneNumber }}</h3>
+    <h2>Email</h2>
+    <h3>{{ contactData?.email }}</h3>
+    <h2>Fax number</h2>
+    <h3>{{ contactData?.faxNumber }}</h3>
+    <h2>Comment</h2>
+    <textarea readonly style="width: 212px; height: 71px; resize: none;" >{{ contactData?.comment === "" ? "No comment" : contactData?.comment }}</textarea>
+  </div>
+  <div>
+    <h2 style="text-align: center">Labels</h2>
+    <div id="contact-data-labels">
+      <div
+        [style.background-color]="label?.color"
+        [style.border-color]="label?.color"
+        *ngFor="let label of contactData?.labels"
+        class="labels"
+      >
+        {{ label?.name }}
+      </div>
+    </div>
+  </div>
+  <div>
+    <h2 style="text-align: center">Custom fields</h2>
+    <div id="contact-data-fields">
+      <div *ngFor="let field of contactData?.customFields" class="custom-field">
+        <h3>{{field?.fieldName}}</h3>
+        <p>{{field?.value}}</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="btns">
+  <button (click)="redirectToEdit()" id="edit-btn">Edit</button>
+  <button (click)="deleteContact()" id="delete-btn">Delete</button>
+</div>

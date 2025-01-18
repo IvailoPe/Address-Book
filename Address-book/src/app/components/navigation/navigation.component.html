@@ -1,14 +1,13 @@
 <nav>
-    <li><p>Home</p></li>
-    <li><p>Add Contact</p></li>
-    <li>
+    <li routerLink="/home"><p>Home</p></li>
+    <li routerLink="/upload"><p>Add Contact</p></li>
+    <li routerLink="/profile">
       <img
-        width="50px"
-        height="50px"
-        src="https://img.freepik.com/free-photo/androgynous-avatar-non-binary-queer-person_23-2151100270.jpg"
-        alt=""
+        width="52px"
+        height="52px"
+        src="http://localhost:5000/images/profile-picture.avif"
       />
     </li>
-    <li><p>Contacts</p></li>
-    <li><p>Log out</p></li>
+    <li routerLink="/contacts/filter"><p>Contacts</p></li>
+    <li (click)="logOut()"><p>Log out</p></li>
 </nav>

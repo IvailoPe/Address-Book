@@ -1,0 +1,97 @@
+:host{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+#search-btns-wrapper{
+    display: flex;
+}
+
+#search-btns{
+    width: 100%;
+}
+
+button{
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 15px;
+  width: 10rem;
+  margin: 0 auto;
+  transition: font-size 0.5s;
+  height: 4rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+#search-btns h2{
+    margin: 0px;
+}
+
+#search-btns-specific{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#main-data-show{
+    width: 100%;
+    height: 100%;
+}
+
+#main-data-show table{
+    width: 100%;
+    height: 100%;
+}
+
+#main-data-show{
+    overflow: auto;
+}
+
+td,th{
+    border: 1px solid black;
+}
+
+button:disabled {
+    background-color: gray;
+    cursor: not-allowed;
+}
+
+button:disabled:hover {
+    background-color: gray; 
+    font-size: 16px;
+}
+
+.error-borders {
+    border: 2px solid red;
+}
+
+td{
+    text-align: center;
+}
+
+input{
+    width: 8rem;
+}
+
+
+button:hover{
+    background-color: #45a049;
+    font-size: 16px;
+}
+
+@media screen and (max-width: 750px) {
+    button{
+        width: 4.3rem;
+        height: 3rem;
+        font-size: 10px;
+    }
+    button:hover{
+        background-color: #45a049;
+        font-size: 10px;
+    }
+}

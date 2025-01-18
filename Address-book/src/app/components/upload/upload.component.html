@@ -1,12 +1,12 @@
 <form [formGroup]="updateForm" (ngSubmit)="onSubmit()">
   <div id="upload-details">
-    <h2 style="text-align: center">Upload</h2>
+    <h2 style="text-align: center; margin: 3px;">Upload</h2>
     <div id="upload-main">
       <div id="upload-details-labels">
         <h2 style="text-align: center">Add labels</h2>
         <input placeholder="Enter label" type="text" />
         <div id="color-box">
-          <div id="color-red" data-color="red"></div>
+          <div id="color-red" data-color="rgb(255, 0, 0)"></div>
           <div id="color-gold" data-color="rgb(255, 215, 0)"></div>
           <div id="color-blue" data-color="rgb(45, 45, 219)"></div>
           <div id="color-purple" data-color="rgb(128, 0, 128)"></div>
@@ -176,7 +176,7 @@
             updateForm.get('phoneNumber')?.touched
           "
         >
-          Phone is invalid and is required..
+          Phone is invalid and is required (359...).
         </div>
 
         <label for="upld-email">Email:</label>
@@ -246,6 +246,19 @@
           Fax must be between 5 and 15 characters.
         </div>
 
+        <label id="label-pic" for="file">Place image url</label>
+        <input placeholder="Enter image url" id="file" type="text" formControlName="image"/>
+
+        <div
+          class="error-text"
+          *ngIf="
+            updateForm.get('image')?.hasError('required') &&
+            updateForm.get('image')?.touched
+          "
+        >
+        Image is required.
+        </div>
+
         <label for="upld-comment">Comment:</label>
         <input
           id="upld-comment"
@@ -270,9 +283,9 @@
           Comment must not be above 500 characters.
         </div>
 
-        <label id="label-pic" for="file">Upload picture here</label>
-        <input id="file" type="file" />
         <button type="submit" [disabled]="updateForm.invalid" [ngStyle]="updateForm.invalid === true ? { 'background-color': 'gray', cursor: 'not-allowed' } : {}">Upload</button>
+        <label id="label-import-data" for="import-data-input">Import contact</label>
+        <input (change)="onFileUpload($event)" id="import-data-input" type="file">
       </div>
       <div id="upload-details-custom-fields">
         <h2 style="text-align: center">Add custom fields</h2>

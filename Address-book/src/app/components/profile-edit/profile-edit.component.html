@@ -1,0 +1,207 @@
+<div id="update-username">
+  <form [formGroup]="updateFormUsername" (ngSubmit)="onSubmitUsername()">
+    <h2 style="text-align: center">Change username</h2>
+    <label for="username">New username:</label>
+    <input
+      formControlName="username"
+      id="username"
+      placeholder="Enter new username"
+      type="text"
+      [ngClass]="{
+        'error-border':
+        updateFormUsername.get('username')?.invalid &&
+        updateFormUsername.get('username')?.touched
+      }"
+    />
+    <div
+      class="error-text"
+      *ngIf="
+        updateFormUsername.get('username')?.hasError('required') &&
+        updateFormUsername.get('username')?.touched
+      "
+    >
+      Username is required.
+    </div>
+    <div
+      class="error-text"
+      *ngIf="
+        (updateFormUsername.get('username')?.hasError('minlength') ||
+        updateFormUsername.get('username')?.hasError('maxlength')) &&
+        updateFormUsername.get('username')?.touched
+      "
+    >
+     Username must be 3-10 characters.
+    </div>
+    <label for="password1">Password required:</label>
+    <input
+      formControlName="password2"
+      id="password1"
+      placeholder="Enter your password"
+      type="password"
+      [ngClass]="{
+        'error-border':
+        updateFormUsername.get('password2')?.invalid &&
+        updateFormUsername.get('password2')?.touched
+      }"
+    />
+    <div
+    class="error-text"
+    *ngIf="
+      updateFormUsername.get('password2')?.hasError('required') &&
+      updateFormUsername.get('password2')?.touched
+    "
+  >
+    Password is required.
+  </div>
+    <button [disabled]="updateFormUsername.invalid" id="edit-btn">
+      Update
+    </button>
+  </form>
+</div>
+<div id="update-email">
+  <form [formGroup]="updateFormEmail"  (ngSubmit)="onSubmitEmail()">
+    <h2 style="text-align: center">Change email</h2>
+    <label for="email">New email:</label>
+    <input
+      formControlName="email"
+      id="email"
+      placeholder="Enter new email"
+      type="text"
+      [ngClass]="{
+        'error-border':
+        updateFormEmail.get('email')?.invalid &&
+        updateFormEmail.get('email')?.touched
+      }"
+    />
+    <div
+      class="error-text"
+      *ngIf="
+        updateFormEmail.get('email')?.hasError('email') &&
+        updateFormEmail.get('email')?.touched
+      "
+    >
+      Email is invalid.
+    </div>
+
+    <div
+    class="error-text"
+    *ngIf="
+      updateFormEmail.get('email')?.hasError('required') &&
+      updateFormEmail.get('email')?.touched
+    "
+  >
+    Email is required.
+  </div>
+    <label for="password2">Password required:</label>
+    <input
+      formControlName="password1"
+      id="password2"
+      placeholder="Enter your password"
+      type="password"
+      [ngClass]="{
+        'error-border':
+        updateFormEmail.get('password1')?.invalid &&
+        updateFormEmail.get('password1')?.touched
+      }"
+    />
+    <div
+      class="error-text"
+      *ngIf="
+        updateFormEmail.get('password1')?.hasError('required') &&
+        updateFormEmail.get('password1')?.touched
+      "
+    >
+      Password is required.
+    </div>
+    <button [disabled]="updateFormEmail.invalid" id="edit-btn">Update</button>
+  </form>
+</div>
+<div id="update-password">
+  <form [formGroup]="updateFormPassword" (ngSubmit)="onSubmitPassword()">
+    <h2 style="text-align: center">Change password</h2>
+    <label for="old-password">Old password:</label>
+    <input
+      formControlName="oldPassword"
+      id="old-password"
+      placeholder="Enter old password"
+      type="password"
+      [ngClass]="{
+        'error-border':
+        updateFormPassword.get('oldPassword')?.invalid &&
+        updateFormPassword.get('oldPassword')?.touched
+      }"
+    />
+    <label for="password3">New password:</label>
+    <input
+      formControlName="password3"
+      id="password3"
+      placeholder="Enter new password"
+      type="password"
+      [ngClass]="{
+        'error-border':
+        updateFormPassword.get('password3')?.invalid &&
+        updateFormPassword.get('password3')?.touched
+      }"
+    />
+    <div
+      class="error-text"
+      *ngIf="
+        updateFormPassword.get('password3')?.hasError('required') &&
+        updateFormPassword.get('password3')?.touched
+      "
+    >
+      Password is required.
+    </div>
+    <button [disabled]="updateFormPassword.invalid" id="edit-btn">
+      Update
+    </button>
+  </form>
+</div>
+<div id="update-phone">
+  <form [formGroup]="updateFormPhone" (ngSubmit)="onSubmitPhone()">
+    <h2 style="text-align: center">Change phone number</h2>
+    <label for="phone">New phone number:</label>
+    <input
+      formControlName="phoneNumber"
+      id="phone"
+      placeholder="Enter new phone number"
+      type="text"
+      [ngClass]="{
+        'error-border':
+        updateFormPhone.get('phoneNumber')?.invalid &&
+        updateFormPhone.get('phoneNumber')?.touched
+      }"
+    />
+    <div
+      class="error-text"
+      *ngIf="
+        updateFormPhone.errors?.['phoneNumber'] &&
+        updateFormPhone.get('phoneNumber')?.touched
+      "
+    >
+      Phone is invalid and is required (359...).
+    </div>
+    <label for="password4">Password required:</label>
+    <input
+      formControlName="password4"
+      id="password4"
+      placeholder="Enter your password"
+      type="password"
+      [ngClass]="{
+        'error-border':
+        updateFormPhone.get('password4')?.invalid &&
+        updateFormPhone.get('password4')?.touched
+      }"
+    />
+    <div
+      class="error-text"
+      *ngIf="
+        updateFormPhone.get('password4')?.hasError('required') &&
+        updateFormPhone.get('password4')?.touched
+      "
+    >
+      Password is required.
+    </div>
+    <button [disabled]="updateFormPhone.invalid" id="edit-btn">Update</button>
+  </form>
+</div>

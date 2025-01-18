@@ -17,7 +17,7 @@ form {
   display: flex;
   flex-direction: column;
   width: 33rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 
 #upload-details-labels button:disabled{
@@ -187,15 +187,18 @@ input {
     margin-top: 4px;
 }
 
-#file {
+#import-data-input{
   display: none;
 }
 
-#label-pic {
-  margin-top: 1rem;
-  border: solid 1px black;
+#label-import-data{
   text-align: center;
+  border: 1px solid rgb(172, 154, 154);
+  background-color: rgb(172, 154, 154);
+  border-radius: 10px;
+  cursor: pointer;
 }
+
 
 #upload-details-main button {
   background-color: #4caf50;
@@ -295,5 +298,9 @@ input {
     margin-top: 3rem;
     padding: 20px;
     margin-bottom: 3rem;
+  }
+
+  #upload-details-labels-box{
+    width: auto;
   }
 }

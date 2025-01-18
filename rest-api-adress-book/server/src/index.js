@@ -17,8 +17,9 @@ try {
 const app = express();
 
 app.use(express.json());
+app.use('/images', express.static("src/images"));
 app.use(cors({
-    origin: 'http://localhost:4200', // Съобразява се с Angular приложението
+    origin: 'http://localhost:4200',
 }));
 
 app.use('/api', routes);

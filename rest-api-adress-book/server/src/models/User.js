@@ -1,6 +1,7 @@
 import { Schema, model } from 'mongoose';
 import bcrypt from 'bcrypt';
 
+// Схема на потребител
 const userSchema = new Schema({
     username: {
         type: String,

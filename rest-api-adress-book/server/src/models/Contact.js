@@ -1,5 +1,6 @@
 import { Schema, model } from 'mongoose';
 
+// Схема на контакт
 const contactSchema = new Schema({
   ownerId: {
     type: Schema.Types.ObjectId, 
@@ -36,6 +37,9 @@ const contactSchema = new Schema({
   comment: {
     type: String,
   },
+  image:{
+    type:String
+  },
   labels: [{
     name: { type: String, required: true },
     color: { type: String, required: true }
@@ -44,7 +48,7 @@ const contactSchema = new Schema({
     fieldName: { type: String, required: true },
     value: { type: Schema.Types.Mixed, required: true }
   }]
-});
+},{timestamps:true});
 
 const Contact = model('Contact', contactSchema);
 

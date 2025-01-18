@@ -1,0 +1,305 @@
+:host{
+    width: 100%;
+}
+
+form {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  width: 100%;
+}
+
+#upload-details {
+  width: 100%;
+}
+
+#upload-details-main {
+  display: flex;
+  flex-direction: column;
+  width: 33rem;
+  margin-bottom: 2rem;
+}
+
+#upload-details-labels button:disabled{
+    background-color: gray;
+    cursor: not-allowed;
+}
+
+#upload-main {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+#upload-details-labels {
+  display: flex;
+  flex-direction: column;
+}
+
+#upload-details-labels button {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 18px;
+  width: 10rem;
+  margin: 0 auto;
+  transition: font-size 0.5s;
+  height: 4rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+hr {
+  display: none;
+}
+
+.custom-field {
+    text-align: center;
+    border-top: solid 1px black;
+    border-bottom: solid 1px black;
+    cursor: pointer;
+  }
+  
+  .custom-field h3 {
+    margin-top: 0px;
+  }
+
+#upload-details-labels-box {
+  width: 23rem;
+  height: 10rem;
+  border: solid 1px black;
+  display: flex;
+  overflow: auto;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+  align-content: flex-start;
+}
+
+::ng-deep .labels {
+  background-color: chartreuse;
+  border: solid 0.2rem chartreuse;
+  display: inline-block;
+  border-radius: 100%;
+  cursor: pointer;
+}
+
+#color-box {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+#color-box div {
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 10px;
+  cursor: pointer;
+  border: solid 1px black;
+}
+
+.selected-label{
+  width: 1.7rem !important;
+  height: 1.7rem !important;
+  border: solid 3px black !important;
+}
+
+#color-red {
+  background-color: #ff0000;
+}
+
+#color-gold {
+  background-color: rgb(255, 215, 0);
+}
+
+#color-blue {
+  background-color: rgb(45, 45, 219);
+}
+
+#color-purple {
+  background-color: rgb(128, 0, 128);
+}
+
+#color-green {
+  background-color: rgb(173, 255, 47);
+}
+
+#color-silver {
+  background-color: rgb(192, 192, 192);
+}
+
+#color-orange {
+  background-color: rgb(255, 165, 0);
+}
+
+#color-yellow {
+  background-color: rgb(255, 255, 0);
+}
+
+#color-pink {
+  background-color: rgb(255, 192, 203);
+}
+
+label {
+  font-size: 1.5rem;
+}
+
+input {
+  padding: 1rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+#upload-details-custom-fields {
+  display: flex;
+  flex-direction: column;
+}
+
+#upload-details-custom-fields button {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 18px;
+  width: 10rem;
+  margin: 0 auto;
+  transition: font-size 0.5s;
+  height: 4rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+#upload-details-custom-fields-box {
+  border: solid 1px black;
+  width: 23rem;
+  height: 10rem;
+  overflow: auto;
+}
+
+::ng-deep .box-custom-field {
+  text-align: center;
+  border-top: solid 1px black;
+  border-bottom: solid 1px black;
+  cursor: pointer;
+}
+
+.box-custom-field h3 {
+  margin-top: 0px;
+}
+
+.error-text {
+    color: red;
+    font-size: 14px;
+    margin-top: 4px;
+}
+
+
+#upload-details-main button {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 18px;
+  width: 10rem;
+  margin: 0 auto;
+  transition: font-size 0.5s;
+  height: 4rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+#upload-details-main button:hover {
+  background-color: #45a049;
+  font-size: 22px;
+}
+
+#upload-details-custom-fields button:hover {
+  background-color: #45a049;
+  font-size: 22px;
+}
+
+#upload-details-labels button:hover {
+  background-color: #45a049;
+  font-size: 22px;
+}
+
+#upload-details-main {
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 25px;
+}
+
+#upload-details-labels {
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 25px;
+}
+
+#upload-details-custom-fields {
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 25px;
+}
+
+.error-border {
+    border-left: 6px solid red;
+}
+
+::ng-deep .labels:hover {
+  background-color: red;
+  border-color: red;
+}
+
+.box-custom-field:hover {
+  background-color: red;
+}
+
+@media screen and (max-width: 1183px) {
+  #upload-main {
+    flex-direction: column;
+  }
+  form {
+    flex-direction: column;
+  }
+  #upload-details-main {
+    order: 1;
+  }
+  #upload-details-labels {
+    order: 3;
+  }
+  #upload-details-custom-fields {
+    order: 5;
+  }
+
+  #upload-details-main {
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 20px;
+    width: 20rem;
+  }
+
+  #upload-details-labels {
+    border: 1px solid black;
+    border-radius: 10px;
+    margin-top: 3rem;
+    padding: 20px;
+  }
+
+  #upload-details-custom-fields {
+    border: 1px solid black;
+    border-radius: 10px;
+    margin-top: 3rem;
+    padding: 20px;
+    margin-bottom: 3rem;
+  }
+
+  #upload-details-labels-box{
+    width: auto;
+  }
+}

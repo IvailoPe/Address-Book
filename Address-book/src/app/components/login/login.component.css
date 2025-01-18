@@ -102,6 +102,7 @@ a {
     padding: 12px;
     border-radius: 8px;
     min-height: 10%;
+    margin: auto;
   }
 
   label {

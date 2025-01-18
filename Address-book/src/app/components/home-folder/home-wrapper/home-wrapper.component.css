@@ -3,3 +3,9 @@
     justify-content: space-evenly;
     flex-wrap: wrap;
 }
+
+:host.no-contacts {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

@@ -1,0 +1,340 @@
+<form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+  <div id="upload-details">
+    <h2 style="text-align: center">Edit</h2>
+    <div id="upload-main">
+      <div id="upload-details-labels">
+        <h2 style="text-align: center">Add labels</h2>
+        <input placeholder="Enter label" type="text" />
+        <div id="color-box">
+          <div id="color-red" data-color="red"></div>
+          <div id="color-gold" data-color="rgb(255, 215, 0)"></div>
+          <div id="color-blue" data-color="rgb(45, 45, 219)"></div>
+          <div id="color-purple" data-color="rgb(128, 0, 128)"></div>
+          <div id="color-green" data-color="rgb(173, 255, 47)"></div>
+          <div id="color-silver" data-color="rgb(192, 192, 192)"></div>
+          <div id="color-orange" data-color="rgb(255, 165, 0)"></div>
+          <div id="color-yellow" data-color="rgb(255, 255, 0)"></div>
+          <div id="color-pink" data-color="rgb(255, 192, 203)"></div>
+        </div>
+        <button type="button">Add label</button>
+        <div id="upload-details-labels-box">
+          <div
+            (mouseover)="mouseOver($event)"
+            (mouseout)="mouseOut($event)"
+            (click)="labelFunc($event)"
+            [style.background-color]="label?.color"
+            [style.border-color]="label?.color"
+            *ngFor="let label of contactData?.labels"
+            class="labels"
+          >{{label?.name}}</div>
+        </div>
+      </div>
+      <div id="upload-details-main">
+        <label for="upld-name">First name: </label>
+        <input
+          id="upld-name"
+          placeholder="Enter first name"
+          type="text"
+          [value]="this.contactData?.firstName"
+          formControlName="firstName"
+          [ngClass]="{
+            'error-border':
+              editForm.get('firstName')?.invalid &&
+              editForm.get('firstName')?.touched
+          }"
+        />
+
+        <div
+          class="error-text"
+          *ngIf="
+            editForm.get('firstName')?.hasError('required') &&
+            editForm.get('firstName')?.touched
+          "
+        >
+          First name is required.
+        </div>
+
+        <div
+          class="error-text"
+          *ngIf="
+            (editForm.get('firstName')?.hasError('minlength') ||
+              editForm.get('firstName')?.hasError('maxlength')) &&
+            editForm.get('firstName')?.touched
+          "
+        >
+          First name must be between 3 and 10 characters.
+        </div>
+
+        <label for="upld-fam-name">Family name:</label>
+        <input
+          id="upld-fam-name"
+          placeholder="Enter family name"
+          type="text"
+          formControlName="familyName"
+          [value]="this.contactData?.lastName"
+          [ngClass]="{
+            'error-border':
+              editForm.get('familyName')?.invalid &&
+              editForm.get('familyName')?.touched
+          }"
+        />
+        <div
+          class="error-text"
+          *ngIf="
+            editForm.get('familyName')?.hasError('required') &&
+            editForm.get('familyName')?.touched
+          "
+        >
+          Family name is required.
+        </div>
+
+        <div
+          class="error-text"
+          *ngIf="
+            (editForm.get('familyName')?.hasError('minlength') ||
+              editForm.get('familyName')?.hasError('maxlength')) &&
+            editForm.get('familyName')?.touched
+          "
+        >
+          Family name must be between 3 and 10 characters.
+        </div>
+
+        <label for="upld-firm">Firm name:</label>
+        <input
+          id="upld-firm"
+          placeholder="Enter firm name"
+          type="text"
+          formControlName="firmName"
+          [value]="this.contactData?.companyName"
+          [ngClass]="{
+            'error-border':
+              editForm.get('firmName')?.invalid &&
+              editForm.get('firmName')?.touched
+          }"
+        />
+
+        <div
+          class="error-text"
+          *ngIf="
+            editForm.get('firmName')?.hasError('required') &&
+            editForm.get('firmName')?.touched
+          "
+        >
+          Firm name is required.
+        </div>
+
+        <div
+          class="error-text"
+          *ngIf="
+            (editForm.get('firmName')?.hasError('minlength') ||
+              editForm.get('firmName')?.hasError('maxlength')) &&
+            editForm.get('firmName')?.touched
+          "
+        >
+          Firm name must be between 3 and 100 characters.
+        </div>
+
+        <label for="upld-address">Address:</label>
+        <input
+          id="upld-address"
+          placeholder="Enter address number"
+          type="text"
+          formControlName="address"
+          [value]="this.contactData?.address"
+          [ngClass]="{
+            'error-border':
+              editForm.get('address')?.invalid &&
+              editForm.get('address')?.touched
+          }"
+        />
+
+        <div
+          class="error-text"
+          *ngIf="
+            editForm.get('address')?.hasError('required') &&
+            editForm.get('address')?.touched
+          "
+        >
+          Address is required.
+        </div>
+
+        <div
+          class="error-text"
+          *ngIf="
+            (editForm.get('address')?.hasError('minlength') ||
+              editForm.get('address')?.hasError('maxlength')) &&
+            editForm.get('address')?.touched
+          "
+        >
+          Address must be between 5 and 100 characters.
+        </div>
+
+        <label for="upld-phone">Phone number:</label>
+        <input
+          id="upld-phone"
+          placeholder="Enter phone number"
+          type="text"
+          formControlName="phoneNumber"
+          [value]="this.contactData?.phoneNumber"
+          [ngClass]="{
+            'error-border':
+              editForm.get('phoneNumber')?.invalid &&
+              editForm.get('phoneNumber')?.touched
+          }"
+        />
+
+        <div
+          class="error-text"
+          *ngIf="
+              editForm.errors?.['phoneNumber'] &&
+              editForm.get('phoneNumber')?.touched
+            "
+        >
+          Phone is invalid and is required (359...).
+        </div>
+
+        <label for="upld-email">Email:</label>
+        <input
+          id="upld-email"
+          placeholder="Enter email"
+          type="text"
+          formControlName="email"
+          [value]="this.contactData?.email"
+          [ngClass]="{
+            'error-border':
+              editForm.get('email')?.invalid && editForm.get('email')?.touched
+          }"
+        />
+
+        <div
+          class="error-text"
+          *ngIf="
+            editForm.get('email')?.hasError('required') &&
+            editForm.get('email')?.touched
+          "
+        >
+          Email is required.
+        </div>
+
+        <div
+          class="error-text"
+          *ngIf="
+            editForm.get('email')?.hasError('email') &&
+            editForm.get('email')?.touched
+          "
+        >
+          Email is invalid.
+        </div>
+
+        <label for="upld-fax">Fax number:</label>
+        <input
+          id="upld-fax"
+          placeholder="Enter fax number"
+          type="text"
+          formControlName="faxNumber"
+          [value]="this.contactData?.faxNumber"
+          [ngClass]="{
+            'error-border':
+              editForm.get('faxNumber')?.invalid &&
+              editForm.get('faxNumber')?.touched
+          }"
+        />
+
+        <div
+          class="error-text"
+          *ngIf="
+            editForm.get('faxNumber')?.hasError('required') &&
+            editForm.get('faxNumber')?.touched
+          "
+        >
+          Fax is required.
+        </div>
+
+        <div
+          class="error-text"
+          *ngIf="
+            (editForm.get('faxNumber')?.hasError('minlength') ||
+              editForm.get('faxNumber')?.hasError('maxlength')) &&
+            editForm.get('faxNumber')?.touched
+          "
+        >
+          Fax must be between 5 and 15 characters.
+        </div>
+
+        <label id="label-pic" for="file">Place image url</label>
+        <input
+          [value]="this.contactData?.image"
+          placeholder="Enter image url"
+          id="file"
+          type="text"
+          formControlName="image"
+        />
+
+        <div
+          class="error-text"
+          *ngIf="
+            editForm.get('image')?.hasError('required') &&
+            editForm.get('image')?.touched
+          "
+        >
+          Image is required.
+        </div>
+
+        <label for="upld-comment">Comment:</label>
+        <input
+          id="upld-comment"
+          placeholder="Enter comment"
+          type="text"
+          formControlName="comment"
+          [value]="this.contactData?.comment"
+          [ngClass]="{
+            'error-border':
+              editForm.get('comment')?.invalid &&
+              editForm.get('comment')?.touched
+          }"
+        />
+
+        <div
+          class="error-text"
+          *ngIf="
+            (editForm.get('comment')?.hasError('minlength') ||
+              editForm.get('comment')?.hasError('maxlength')) &&
+            editForm.get('comment')?.touched
+          "
+        >
+          Comment must not be above 500 characters.
+        </div>
+
+        <button
+          type="submit"
+          [disabled]="editForm.invalid"
+          [ngStyle]="
+            editForm.invalid === true
+              ? { 'background-color': 'gray', cursor: 'not-allowed' }
+              : {}
+          "
+        >
+          Edit
+        </button>
+      </div>
+      <div id="upload-details-custom-fields">
+        <h2 style="text-align: center">Add custom fields</h2>
+        <label for="title">Title:</label>
+        <input placeholder="Enter title" id="title" type="text" />
+        <label for="field-description">Field description:</label>
+        <input
+          placeholder="Enter description"
+          id="field-description"
+          type="text"
+        />
+        <button type="button">Add field</button>
+        <div id="upload-details-custom-fields-box">
+            <div (click)="fieldFunct($event)" (mouseover)="mouseOverField($event)" (mouseout)="mouseOutField($event)" *ngFor="let field of contactData?.customFields" class="box-custom-field">
+                <h3>{{field?.fieldName}}</h3>
+                <p>{{field?.value}}</p>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

@@ -1,0 +1,18 @@
+<img
+id="profile-img"
+src="http://localhost:5000/images/profile-picture.avif"
+/>
+<div id="profile-data">
+  <h2>Name</h2>
+  <h3>{{profileData?.username}}</h3>
+  <h2>Email</h2>
+  <h3>{{profileData?.email}}</h3>
+  <h2>Phone number</h2>
+  <h3>+{{profileData?.phoneNumber}}</h3>
+  <h2>Number of contacts</h2>
+  <h3>{{profileData?.contacts?.length}}</h3>
+</div>
+<div>
+  <button (click)="redirectToEditProfilePage()" id="edit-btn">Edit user</button>
+  <button (click)="deleteProfile()" id="delete-btn">Delete user</button>
+</div>

@@ -6,14 +6,16 @@ import { UserInterfaceLog, UserInterfaceReg } from './interfaces/user-interfaces
 @Injectable({
   providedIn: 'root',
 })
-export class AuthService {
+export class AuthService { // Auth service-са служи за всички необходими деиствия обвързани с упълномощаването
 
   constructor(private http: HttpClient) {}
 
+  // Връща дали сме логнати
   isAuthenticated(): boolean {
     return localStorage.getItem('token') !== null ? true : false;
   }
 
+  // Регистрира нов потребител
   regUser(username:string,password:string,email:string,phoneNumber:string) {
     return this.http.post<UserInterfaceReg>(API + "users/register",{
       username,
@@ -23,11 +25,24 @@ export class AuthService {
     })
   }
 
+  // Логва потребител
   logUser(username:string,password:string){
     return this.http.post<UserInterfaceLog>(API + "users/login",{
       username,
       password
     })
+  }
+
+  // Връща ни токена на сегашния логнат потребител
+  getToken(){
+    return localStorage.getItem("token");
+  }
+
+
+  // Разлогваме потребителя
+  unLogUser(){
+    localStorage.removeItem('token')
+    localStorage.removeItem('user')
   }
 
 }

@@ -1,8 +1,9 @@
-import Contact from "../models/Contact";
+import Contact from "../models/Contact.js";
 import User from "../models/User.js";
 
 class ContactService {
-    async createContact(ownerId, contactData) {
+    // Метод за създаване на контакт
+    async createContact(ownerId, contactData) { 
         try {
             const contact = new Contact({ ...contactData, ownerId });
             await contact.save();
@@ -20,6 +21,7 @@ class ContactService {
         }
     }
 
+    // Метод за извличане на контакти на даден потребител
     async getContactsByUser(ownerId) {
         try {
             const contacts = await Contact.find({ ownerId }).populate(
@@ -32,6 +34,7 @@ class ContactService {
         }
     }
 
+    // Метод за извличане на един контакт на даден потребител
     async getContactById(contactId) {
         try {
             const contact = await Contact.findById(contactId);
@@ -44,6 +47,7 @@ class ContactService {
         }
     }
 
+    // Метод за актуализиране на един контакт
     async updateContact(contactId, updatedData) {
       try {
           const contact = await Contact.findById(contactId);
@@ -60,6 +64,7 @@ class ContactService {
               email,
               faxNumber,
               comment,
+              image
           } = updatedData;
           if (firstName) contact.firstName = firstName;
           if (lastName) contact.lastName = lastName;
@@ -68,24 +73,19 @@ class ContactService {
           if (phoneNumber) contact.phoneNumber = phoneNumber;
           if (email) contact.email = email;
           if (faxNumber) contact.faxNumber = faxNumber;
-          if (comment) contact.comment = comment;
-  
+          if (comment || comment === "") contact.comment = comment;
+          if (image) contact.image = image;
+
           if (!updatedData.labels || updatedData.labels.length === 0) {
               throw new Error("At least one label is required.");
           }
           contact.labels = updatedData.labels;
   
           if (updatedData.customFields) {
-              updatedData.customFields.forEach((newField) => {
-                  const existingField = contact.customFields.find(
-                      (field) => field.fieldName === newField.fieldName
-                  );
-                  if (existingField) {
-                      existingField.value = newField.value;
-                  } else {
-                      contact.customFields.push(newField);
-                  }
-              });
+            contact.customFields = updatedData.customFields
+          }
+          else if(updatedData.customFields.length === 0){
+            contact.customFields = []
           }
   
           await contact.save();
@@ -95,7 +95,7 @@ class ContactService {
       }
   }
   
-
+    // Метод за изтриване на даден контакт
     async deleteContact(contactId) {
         try {
             const contact = await Contact.findByIdAndDelete(contactId);

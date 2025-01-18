@@ -1,23 +1,4 @@
 <div id="main-wrapper">
-    <app-home-contact></app-home-contact>
-    <app-home-contact></app-home-contact>
-    <app-home-contact></app-home-contact>
-    <app-home-contact></app-home-contact>
-    <app-home-contact></app-home-contact>
-    <app-home-contact></app-home-contact>
-    <app-home-contact></app-home-contact>
-    <app-home-contact></app-home-contact>
-    <app-home-contact></app-home-contact>
-    <app-home-contact></app-home-contact>
-    <app-home-contact></app-home-contact>
-    <app-home-contact></app-home-contact>
-    <app-home-contact></app-home-contact>
-    <app-home-contact></app-home-contact>
-    <app-home-contact></app-home-contact>
-    <app-home-contact></app-home-contact>
-    <app-home-contact></app-home-contact>
-    <app-home-contact></app-home-contact>
-    <app-home-contact></app-home-contact>
-    <app-home-contact></app-home-contact>
-    <app-home-contact></app-home-contact>
+    <app-home-contact *ngFor="let contact of contactsData" [data]="contact"></app-home-contact>
+    <h1 *ngIf="contactsData?.length === 0">No contacts</h1>
 </div>

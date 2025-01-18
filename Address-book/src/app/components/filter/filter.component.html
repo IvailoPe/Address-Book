@@ -1,0 +1,69 @@
+<div id="search-btns">
+  <h2 style="text-align: center">Search by</h2>
+  <hr />
+  <div id="search-btns-wrapper">
+    <button (click)="getAllRecoords()">All records</button>
+    <button (click)="getAllFrequentTags()">Frequent tags</button>
+    <form [formGroup]="searchForm" id="search-btns-specific" (ngSubmit)="onSubmit()">
+      <label style="text-align: center" for="name">Name</label>
+      <input
+        formControlName="firstName"
+        id="name"
+        placeholder="Enter name"
+        type="text"
+        [ngClass]="{
+          'error-borders':
+          searchForm.get('firstName')?.invalid &&
+          searchForm.get('firstName')?.touched
+        }"
+      />
+      <label style="text-align: center" for="surname">Surname</label>
+      <input
+        formControlName="lastName"
+        id="surname"
+        placeholder="Enter surname"
+        type="text"
+        [ngClass]="{
+          'error-borders':
+          searchForm.get('lastName')?.invalid &&
+          searchForm.get('lastName')?.touched
+        }"
+      />
+      <button [disabled]="searchForm.invalid" >Search</button>
+    </form>
+    <button (click)="getAllContactsWithSameFnames()">Same names</button>
+    <button (click)="getAllContactsWithSameLnames()">Same lastname</button>
+  </div>
+</div>
+<div [ngStyle]="{'display': contactsData.length === 0 ? 'flex' : 'block',
+                'justify-content': contactsData.length === 0 ? 'center' : 'flex-start', 
+                'align-items': contactsData.length === 0 ? 'center' : 'stretch',
+}" id="main-data-show">
+  <h1 style="text-align: center; font-size: 2.6rem;" *ngIf="contactsData.length === 0">No data found</h1>
+  <table *ngIf="contactsData?.length !== 0">
+    <tr>
+      <th>First name</th>
+      <th>Last name</th>
+      <th>Email</th>
+      <th>Address</th>
+      <th>Phone</th>
+      <th>Company name</th>
+      <th>Fax number</th>
+      <th>Labels</th>
+    </tr>
+    <tr *ngFor="let contact of contactsData">
+      <td>{{ contact?.firstName }}</td>
+      <td>{{ contact?.lastName }}</td>
+      <td>{{ contact?.email }}</td>
+      <td>{{ contact?.address }}</td>
+      <td>{{ contact?.phoneNumber }}</td>
+      <td>{{ contact?.companyName }}</td>
+      <td>{{ contact?.faxNumber }}</td>
+      <td>
+        <ng-container *ngFor="let label of contact?.labels">
+          {{ label.name }},
+        </ng-container>
+      </td>
+    </tr>
+  </table>
+</div>

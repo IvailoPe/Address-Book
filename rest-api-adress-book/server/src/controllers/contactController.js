@@ -1,9 +1,11 @@
 import { Router } from "express";
 import contactService from "../services/contactService.js";
 import authMiddleware from "../middlewares/authMiddleware.js";
+import checkPermission from "../middlewares/permissionMiddleware.js";
 
 const contactController = Router();
 
+// Път за създаване на нов контакт
 contactController.post("/", authMiddleware, async (req, res) => {
     const ownerId = req.user.id;
     const contactData = req.body;
@@ -16,6 +18,7 @@ contactController.post("/", authMiddleware, async (req, res) => {
     }
 });
 
+// Път за извличане на всички контакти на потребителя
 contactController.get("/", authMiddleware, async (req, res) => {
     const ownerId = req.user.id;
 
@@ -27,7 +30,8 @@ contactController.get("/", authMiddleware, async (req, res) => {
     }
 });
 
-contactController.get("/:id", authMiddleware, async (req, res) => {
+// Път за извличане на контакт по ID
+contactController.get("/:id", authMiddleware,checkPermission, async (req, res) => {
     const { id: contactId } = req.params;
 
     try {
@@ -38,10 +42,11 @@ contactController.get("/:id", authMiddleware, async (req, res) => {
     }
 });
 
+// Път за актуализиране на контакт по ID
 contactController.put("/:id", authMiddleware, async (req, res) => {
     const { id: contactId } = req.params;
     const updatedData = req.body;
-
+    
     try {
         const updatedContact = await contactService.updateContact(contactId, updatedData);
         res.json(updatedContact);
@@ -50,6 +55,7 @@ contactController.put("/:id", authMiddleware, async (req, res) => {
     }
 });
 
+// Път за изтриване на контакт по ID
 contactController.delete("/:id", authMiddleware, async (req, res) => {
     const { id: contactId } = req.params;
 

@@ -1,24 +1,18 @@
-<div class="contact">
-    <span id="contact-date-creation">Created: 12/01/2025 12:25</span>
-    <div class="contact-main">
-      <img
-        width="50px"
-        height="50px"
-        src="https://img.freepik.com/free-photo/androgynous-avatar-non-binary-queer-person_23-2151100270.jpg"
-        alt=""
-      />
-        <span id="contact-main-name">Ivailo Petkov</span>
-    </div>
-    <div id="contact-labels">
-        <div class="label">
-           family
-        </div>
-        <div class="label">
-            family
-         </div>
-         <div class="label">
-            Neighbor
-         </div>
-         <span>+4</span>
-    </div>
+<div class="contact" routerLink="/contact/{{data._id}}">
+  <span id="contact-date-creation">Created: {{date.getDate()}}.{{date.getMonth() + 1}}.{{date.getFullYear()}}</span>
+  <div class="contact-main">
+    <img width="50px" height="50px" src="{{data.image}}" alt="" />
+    <span id="contact-main-name">{{ data.firstName }} {{ data.lastName }}</span>
   </div>
+  <div id="contact-labels">
+    <div
+      [style.background-color]="label.color"
+      [style.border-color]="label.color"
+      *ngFor="let label of data.labels.slice(0, 2)"
+      class="label"
+    >
+      {{ label.name }}
+    </div>
+    <span *ngIf="data.labels.length > 2">+{{data.labels.length - 2}}</span>
+  </div>
+</div>
